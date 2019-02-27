@@ -17,7 +17,8 @@ class WebServer {
     
     WebServer( );
       
-    WebRequest awaitRequest();
+    //WebRequest awaitRequest();
+    void awaitRequest( );
 
 };
 

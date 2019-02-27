@@ -17,7 +17,7 @@ class ApiEndpoint {
   
   WebPage webPage;
   
-  String (*function)(String);   // TODO: Change Parameter to WebRequest
+  String (*function)(String);   // TODO: Change Parameter to WebRequest*/
 
   
   public:
@@ -38,7 +38,7 @@ class ApiEndpoint {
 
     int getRequiredParametersCount();
 
-    String process( WebRequest webRequest );
+    //String process( WebRequest webRequest );
     
 
 };

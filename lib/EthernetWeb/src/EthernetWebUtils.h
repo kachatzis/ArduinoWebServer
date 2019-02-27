@@ -7,7 +7,7 @@
 #include <WebPage.h>
 
 
-// #define FOREACH_REQUEST_METHOD(REQUEST_METHOD)  \
+/*// #define FOREACH_REQUEST_METHOD(REQUEST_METHOD)  \
 //         REQUEST_METHOD(REQUEST_METHOD_GET)      \
 
 // #define GENERATE_ENUM(ENUM) ENUM,
@@ -21,7 +21,7 @@
 
 // static const char *REQUEST_METHOD_STRING[] = {
 //     FOREACH_REQUEST_METHOD(GENERATE_STRING)
-// };
+// };*/
 
 
 class EthernetWebUtils {

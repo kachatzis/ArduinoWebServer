@@ -8,28 +8,27 @@
 #include <Ethernet.h>
 
 
-
-
 class ApiServer {
-
-  ApiEndpoint *endpoints;
+  
+  //ApiEndpoint *endpoints;
   
   int endpointsCount;
   
-  WebServer webServer;
+  //WebServer webServer;
 
   
   public: 
 
     ApiServer();
+    
+    //ApiServer( ApiEndpoint *endpoints , int endpoitsCount );
 
-    ApiServer( ApiEndpoint *endpoints , int endpoitsCount );
-
-    ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
+    //ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
 
     ApiServer startWebServer( EthernetServer ethernetServer );
 
     ApiServer runFullThread();
+
   
 };
 

@@ -8,7 +8,7 @@ WebServer::WebServer( EthernetServer ethernetServer ){
 
 WebServer::WebServer( ) { ;}
 
-WebRequest WebServer::awaitRequest(){
+void WebServer::awaitRequest(){
   EthernetClient client;
   client = this->server.available();
   if (client) {
@@ -23,15 +23,16 @@ WebRequest WebServer::awaitRequest(){
           Serial.println(readString);
           client.stop();
           WebRequest webRequest( readString , client );
-          return webRequest;
+          //return webRequest;
+          
         }
       }
       maxLength--;
     }
     Serial.println("  >NULL-REQUEST-CLIENT-NOT-AVAILABLE-OR-MAX-LENGTH");
     client.stop();
-    return WebRequest();
+    //return WebRequest();
   }
   client.stop();
-  return WebRequest();
+  //return WebRequest();
 }

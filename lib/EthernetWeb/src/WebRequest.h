@@ -7,24 +7,25 @@
 #include <WebPage.h>
 
 
-//#define REQUEST_METHOD_ENUM = (EthernetWebUtils::REQUEST_METHOD_STRING)
+/*//#define REQUEST_METHOD_ENUM = (EthernetWebUtils::REQUEST_METHOD_STRING)
 
 
-#define FOREACH_REQUEST_METHOD(REQUEST_METHOD)  \
-        REQUEST_METHOD(REQUEST_METHOD_GET)      \
+// DISABLE REQUEST ENUM
+// #define FOREACH_REQUEST_METHOD(REQUEST_METHOD)  \
+//         REQUEST_METHOD(REQUEST_METHOD_GET)      \
 
-#define GENERATE_ENUM(ENUM) ENUM,
-#define GENERATE_STRING(STRING) #STRING,
+// #define GENERATE_ENUM(ENUM) ENUM,
+// #define GENERATE_STRING(STRING) #STRING,
 
 
 
-enum REQUEST_METHOD_ENUM {
-    FOREACH_REQUEST_METHOD(GENERATE_ENUM)
-};
+// enum REQUEST_METHOD_ENUM {
+//     FOREACH_REQUEST_METHOD(GENERATE_ENUM)
+// };
 
-static const char *REQUEST_METHOD_STRING[] = {
-    FOREACH_REQUEST_METHOD(GENERATE_STRING)
-};
+// static const char *REQUEST_METHOD_STRING[] = {
+//     FOREACH_REQUEST_METHOD(GENERATE_STRING)
+// };*/
 
 
 
@@ -36,7 +37,7 @@ class WebRequest {
   
   int parametersCount;
   
-  REQUEST_METHOD_ENUM method; 
+  // REQUEST_METHOD_ENUM method; 
   
   String body;
   
@@ -64,7 +65,8 @@ class WebRequest {
 
     void setRequestUrl( String request );
     
-    REQUEST_METHOD_ENUM setRequestMethod( String request );
+    // DISABLE REQUEST ENUM
+    //REQUEST_METHOD_ENUM setRequestMethod( String request );
     
     int setContentLength( String request );
     
@@ -74,7 +76,8 @@ class WebRequest {
 
     String getUrl();
 
-    REQUEST_METHOD_ENUM getMethod();
+    // DISABLE REQUEST ENUM
+    //REQUEST_METHOD_ENUM getMethod();
 
     int getContentLength();
 
