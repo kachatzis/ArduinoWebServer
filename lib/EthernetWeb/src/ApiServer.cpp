@@ -1,8 +1,6 @@
 #include <ApiServer.h>
 
 
-
-
 ApiServer::ApiServer(){
   //this->endpoints = new ApiEndpoint[0];
   this->endpointsCount = 0;

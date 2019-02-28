@@ -1,6 +1,8 @@
 #include <SPI.h>
-#include <Ethernet.h>
-#include <WebPage.h>
+//#include <Ethernet.h>
+
+
+#include <TestLib.h>
 
 
 
@@ -58,7 +60,7 @@ void loop() {
   apiServer.runFullThread();
   */
   Serial.println("  >API-FULL-THREAD-COLLAPSED");
-  Serial.println( WEBPAGE_H );
+  //Serial.println( WEBPAGE_H );
   delay(500);
 }
 
