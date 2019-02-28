@@ -2,8 +2,7 @@
 #define ETHERNETWEBUTILS_H
 
 
-#include "Ethernet.h"
-#include "EthernetClient.h"
+#include "Ethernet3.h"
 #include <WebServer.h>
 #include <ApiServer.h> 
 #include <WebPage.h>

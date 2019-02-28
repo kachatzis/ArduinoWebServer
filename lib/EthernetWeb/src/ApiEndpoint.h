@@ -5,6 +5,7 @@
 #include <EthernetWebUtils.h>
 #include <WebRequest.h>
 #include <WebPage.h>
+#include "Ethernet3.h"
 
 
 class ApiEndpoint {

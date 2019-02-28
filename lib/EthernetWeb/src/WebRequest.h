@@ -3,8 +3,7 @@
 
 #include <Arduino.h>
 #include <EthernetWebUtils.h>
-#include "EthernetServer.h"
-#include "EthernetClient.h"
+#include "Ethernet3.h"
 #include <WebPage.h>
 
 

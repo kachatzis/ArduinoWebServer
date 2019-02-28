@@ -2,9 +2,8 @@
 #define WEBSERVER_H
 
 #include <Arduino.h>
-#include "EthernetServer.h"
-#include "EthernetClient.h"
-#include "WebRequest.h"
+#include "Ethernet3.h"
+#include <WebRequest.h>
 
 
 class WebServer {

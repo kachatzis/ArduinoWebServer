@@ -5,8 +5,7 @@
 #include <WebServer.h>
 #include <WebRequest.h>
 #include <ApiEndpoint.h>
-#include "EthernetServer.h"
-#include "EthernetClient.h"
+#include "Ethernet3.h"
 
 
 class ApiServer {
