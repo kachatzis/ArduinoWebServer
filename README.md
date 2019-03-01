@@ -1,6 +1,6 @@
 # ArduinoWebServer
 
-[![Build Status](https://travis-ci.com/kachatzis/ArduinoWebServer.svg?branch=master)](https://travis-ci.com/kachatzis/ArduinoWebServer)
+[![Build Status](https://travis-ci.com/kachatzis/ArduinoWebServer.svg?branch=EthernetWeb-Library-Fix)](https://travis-ci.com/kachatzis/ArduinoWebServer)
 
 Simple Web API Server for Arduino Uno with WIZnet W5500 Ethernet Shield.
 

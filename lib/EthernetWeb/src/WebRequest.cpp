@@ -1,41 +1,27 @@
-#include <WebRequest.h>
+#include "WebRequest.h"
+
+
+#include "EthernetWebUtils.h"
+#include "WebPage.h"
 
  
 WebRequest::WebRequest() {
   this->url = "";
-  this->method = REQUEST_METHOD_ENUM::REQUEST_METHOD_GET;
-  this->body = "";
-  this->contentLength = -1;
-  this->parametersCount;
-  this->webPage = WebPage();
+  this->parametersCount = 0;
 }
 
 WebRequest::WebRequest( String request ) : WebRequest(){
   request.trim();
   this->realRequest = request;
   this->setRequestUrl( request );
-  this->setRequestMethod( request );
-  this->setContentLength( request );
 }
 
 WebRequest::WebRequest( String request , EthernetClient ethernetClient ) : WebRequest(request){
   this->ethernetClient = ethernetClient;
-    //this->reply();
-    //ethernetClient.stop();
-  Serial.println("  >WEB-REQUEST-ANALYZING-ENDED");
 }
 
 WebRequest::~WebRequest() {
-  Serial.println("  >DECONSTRUCTING-WEB-REQUEST");
   String url;
-  //String (*parameters)[2];
-  //int parametersCount;
-  //REQUEST_METHOD_ENUM method;
-  // String body;
-  // int contentLength;
-  // String realRequest;
-  // EthernetClient ethernetClient;
-  // WebPage webPage;
 }
 
 String* WebRequest::splitString( String string , String delimiter  ){
@@ -64,61 +50,8 @@ void WebRequest::setRequestUrl( String request ){
   this->setRequestParameters( str[1] );
 }
 
-REQUEST_METHOD_ENUM WebRequest::setRequestMethod( String request ){
-    // Default
-  this->method = REQUEST_METHOD_ENUM::REQUEST_METHOD_GET;
-  
-    // extern REQUEST_METHOD_ENUM requestMethod;
-    // int urlIndex = 0;
-    // int i=0;
-    // String header = "";
-    // do{
-    //     header += request[ i ];
-    //     i++;
-    // }while( request[ i ] != '\n' && i < 10 );
-    
-    // if ( header.indexOf("GET ")>-1 ) {
-    //   return REQUEST_METHOD_GET;
-    // }
-    // //return REQUEST_METHOD_GET;
-}
-
-int WebRequest::setContentLength( String request ){
-    // Default
-  this->contentLength = 0;
-    // int contentLengthIndex = request.indexOf("Content-Length:");
-    // String contentLength = "";
-    // int i=0;
-    // do{
-    //   if ( request[ contentLengthIndex + ((String)"Content-Length: ").length() + i ] != '\n') 
-    //     contentLength += reqsizeof(input)/uest[ contentLengthIndex + ((String)"Content-Length: ").length() + i ] ;
-    //     i++;
-    //   if (i>100)
-    //     return -1;
-    // }while( request[ contentLengthIndex + ((String)"Content-Length: ").length() + i ] != '\n');
-
-    // this->contentLength = contentLength.toInt();
-    // //return contentLength.toInt();
-}
-
-String WebRequest::setRequestBody( String request ){
-  return "";
-}
-
-String WebRequest::getBody(){
-  return this->body;
-}
-
 String WebRequest::getUrl(){
   return this->url;
-}
-
-REQUEST_METHOD_ENUM WebRequest::getMethod(){
-  return this->method;
-}
-
-int WebRequest::getContentLength(){
-  return this->contentLength;
 }
 
 void WebRequest::setRequestParameters( String parameters ){
@@ -147,12 +80,8 @@ int WebRequest::getParametersCount(){
   return this->parametersCount;
 }
 
-void WebRequest::setWebPage(WebPage webPage){
-  this->webPage = webPage;
-}
-
 void WebRequest::reply(){
-  EthernetWebUtils::serveWebPage( this->webPage , this->ethernetClient );
+  // EthernetWebUtils::serveWebPage( this->webPage , this->ethernetClient );
 }
 
 EthernetClient WebRequest::getEthernetClient(){

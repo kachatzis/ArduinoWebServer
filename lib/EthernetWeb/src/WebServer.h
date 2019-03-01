@@ -1,23 +1,27 @@
 #ifndef WEBSERVER_H
 #define WEBSERVER_H
 
+
 #include <Arduino.h>
 #include <Ethernet.h>
-#include <WebRequest.h>
+
+
+class WebRequest;
 
 
 class WebServer {
 
-  EthernetServer server = EthernetServer(80);
+  EthernetServer ethernetServer = EthernetServer(80);
 
 
   public: 
     
+    WebServer();
+
     WebServer( EthernetServer ethernetServer );
     
-    WebServer( );
-      
-    WebRequest awaitRequest();
+    WebRequest getWebRequest();
+    // void awaitRequest( );
 
 };
 

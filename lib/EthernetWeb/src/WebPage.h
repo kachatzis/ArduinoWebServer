@@ -1,7 +1,9 @@
 #ifndef WEBPAGE_H
 #define WEBPAGE_H
 
+
 #include <Arduino.h>
+
 
 class WebPage {
 
@@ -29,5 +31,6 @@ class WebPage {
     bool getUseClient();
 
 };
+
 
 #endif

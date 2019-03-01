@@ -1,6 +1,9 @@
-#include <ApiServer.h>
+#include "ApiServer.h"
 
 
+#include "ApiEndpoint.h"
+#include "WebServer.h"
+#include "WebRequest.h"
 
 
 ApiServer::ApiServer(){
@@ -9,28 +12,22 @@ ApiServer::ApiServer(){
   this->webServer = WebServer( EthernetServer(80) );
 }
 
-ApiServer::ApiServer( ApiEndpoint* endpoints , int endpoitsCount ) :ApiServer(){
+ApiServer::ApiServer( ApiEndpoint *endpoints , int endpoitsCount ) : ApiServer(){
   this->endpoints = endpoints;
   this->endpointsCount = endpointsCount;
 }
 
-ApiServer::ApiServer( ApiEndpoint* endpoints , int endpointsCount , WebServer webServer ) :ApiServer( endpoints , endpointsCount ){
+ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer ) : ApiServer( endpoints , endpointsCount ){
   this->webServer = webServer;
 }
 
-ApiServer ApiServer::startWebServer( EthernetServer ethernetServer ){
-  this->webServer = WebServer( ethernetServer );
-  return *this;
-}
-
 ApiServer ApiServer::runFullThread(){
-  while(true){
-    delay(90);
-    Serial.println("  >FULL-THREAD-RUN-STARTING");
+  // while(true){
+  //   delay(90);
 
     
-    WebRequest *webRequest = new WebRequest();
-    *webRequest = (this->webServer).awaitRequest();
+   // WebRequest *webRequest = new WebRequest();
+    // *webRequest = (this->webServer).awaitRequest();
       //Serial.println( (*webRequest).getUrl() );
       //if ((*webRequest).hasEnded()){
         //Serial.println( "  >REQUEST-FOUND:" );
@@ -41,11 +38,11 @@ ApiServer ApiServer::runFullThread(){
         //Serial.println("  >FULL-THREAD-RUN-ENDED");
         //delay(1000);
       //}
-    Serial.println("  >FULL-THREAD-RUN-ENDED");
       //(*webRequest).destroy();
-    delete &(*webRequest);
+    //delete &(*webRequest);
       //(*webRequest).destroy();
-    Serial.println("  >WEB-REQUEST-DELETED");
-    delay(2000);
- }
+//     delay(2000);
+//  }
+
+ return *this;
 }
