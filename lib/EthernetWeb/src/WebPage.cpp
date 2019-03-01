@@ -2,8 +2,8 @@
 
 
 WebPage::WebPage(){
-  body = "<p>NULL</p>";
-  title = "NULL";
+  body = "";
+  title = "";
   useClient = true;
 }
 
