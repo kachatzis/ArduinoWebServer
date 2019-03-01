@@ -23,30 +23,35 @@ ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer we
 }
 
 ApiServer ApiServer::runFullThread(){
-  // while(true){
-  //   delay(90);
+  
+  while(true){
+    delay(150);  // Wait 80ms before scans
+    Serial.println("  >SCAN");
+    WebRequest *webRequest = new WebRequest();
+   *webRequest = ((this->webServer).getWebRequest());
 
+    if ((*webRequest).hasEnded()){
+
+      ApiEndpoint *sApiEndpoint = findEndpointByRequest(*webRequest);
+      if (sApiEndpoint.getUrl() == ""){
+        continue;
+      }
+      WebPage rWebPage = sApiEndpoint.generateWebPage( *webRequest );
+      
+      webServer.replyRequest( rWebPage , (*webRequest).getEthernetClient() );
+      webServer.closeRequest( (*webRequest).getEthernetClient() );
+
+
+      delay(100);  // Wait 100ms after the request
+    }
     
-   // WebRequest *webRequest = new WebRequest();
-    // *webRequest = (this->webServer).awaitRequest();
-      //Serial.println( (*webRequest).getUrl() );
-      //if ((*webRequest).hasEnded()){
-        //Serial.println( "  >REQUEST-FOUND:" );
-        //Serial.println( (*webRequest).getUrl() );
-        //((*webRequest).getEthernetClient()).stop();
-        //EthernetWebUtils.serveWebPage( new WebPage("" , "") , webRequest.get )
-        //webServer.serve( WebPage("" , "") );
-        //Serial.println("  >FULL-THREAD-RUN-ENDED");
-        //delay(1000);
-      //}
-      //(*webRequest).destroy();
-    //delete &(*webRequest);
-      //(*webRequest).destroy();
-//     delay(2000);
-//  }
+    delete &webRequest;
+  }
 
- return *this;
+  return *this;
 }
+
+
 ApiEndpoint ApiServer::findEndpointByRequest( WebRequest webRequest ){
   for (int i=0; i<endpointsCount; i++){
    if (this->endpoints[i].getUrl() == webRequest.getUrl()){
