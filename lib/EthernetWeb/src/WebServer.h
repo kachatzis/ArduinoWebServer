@@ -23,7 +23,12 @@ class WebServer {
     
     WebRequest getWebRequest();
 
+    WebServer replyRequest( WebPage webPage , EthernetClient ethernetClient );
 
+    void serveWebPage( WebPage webPage , EthernetClient client );
+
+    WebServer closeRequest( EthernetClient ethernetClient );
+     
 };
 
 
