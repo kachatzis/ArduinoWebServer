@@ -1,6 +1,5 @@
 #include "WebPage.h"
 
- 
 
 WebPage::WebPage(){
   body = "<p>NULL</p>";

@@ -1,6 +1,11 @@
 #include "EthernetWebUtils.h"
 
 
+#include "WebPage.h"
+#include "WebServer.h"
+#include "ApiServer.h" 
+
+
 void EthernetWebUtils::serveWebPage( WebPage webPage , EthernetClient client ){
     Serial.print("  >SERVING-WEBPAGE:");
     Serial.println(webPage.getTitle());

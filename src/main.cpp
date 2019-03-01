@@ -1,7 +1,7 @@
+#include <Arduino.h>
 #include <SPI.h>
-#include <Ethernet3.h>
-#include "WebRequest.h"
-#include "EthernetWeb.h"
+#include <Ethernet.h>
+#include <EthernetWeb.h>
 
 
 

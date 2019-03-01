@@ -9,8 +9,7 @@
 #include "EthernetWebUtils.h"
 #include "ApiServer.h"
 #include "ApiEndpoint.h"
-#include <Ethernet3.h>
-
+#include <Ethernet.h>
 
 
 #endif

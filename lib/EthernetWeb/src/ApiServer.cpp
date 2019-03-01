@@ -1,6 +1,11 @@
 #include "ApiServer.h"
 
 
+#include "ApiEndpoint.h"
+#include "WebServer.h"
+#include "WebRequest.h"
+
+
 ApiServer::ApiServer(){
   this->endpoints = new ApiEndpoint[0];
   this->endpointsCount = 0;
@@ -16,15 +21,9 @@ ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer we
   this->webServer = webServer;
 }
 
-ApiServer ApiServer::startWebServer( EthernetServer ethernetServer ){
-  // this->webServer = WebServer( ethernetServer );
-  return *this;
-}
-
 ApiServer ApiServer::runFullThread(){
-  while(true){
-    delay(90);
-    Serial.println("  >FULL-THREAD-RUN-STARTING");
+  // while(true){
+  //   delay(90);
 
     
    // WebRequest *webRequest = new WebRequest();
@@ -39,11 +38,11 @@ ApiServer ApiServer::runFullThread(){
         //Serial.println("  >FULL-THREAD-RUN-ENDED");
         //delay(1000);
       //}
-    Serial.println("  >FULL-THREAD-RUN-ENDED");
       //(*webRequest).destroy();
     //delete &(*webRequest);
       //(*webRequest).destroy();
-    Serial.println("  >WEB-REQUEST-DELETED");
-    delay(2000);
- }
+//     delay(2000);
+//  }
+
+ return *this;
 }

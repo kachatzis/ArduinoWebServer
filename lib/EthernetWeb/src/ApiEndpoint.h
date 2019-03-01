@@ -2,13 +2,12 @@
 #define APIENDPOINT_H
 
 
-
-#include "WebPage.h"
-//#include "EthernetWeb.h"
 #include <Arduino.h>
 #include "EthernetWebUtils.h"
-#include "WebRequest.h"
-#include <Ethernet3.h>
+#include <Ethernet.h>
+
+
+class WebRequest;
 
 
 class ApiEndpoint {
@@ -18,8 +17,6 @@ class ApiEndpoint {
   String* requiredParameters;
   
   int requiredParametersCount;
-  
-  WebPage webPage;
   
   String (*function)(String);   // TODO: Change Parameter to WebRequest*/
 
@@ -32,8 +29,6 @@ class ApiEndpoint {
 
     ApiEndpoint setRequiredParameters( String* requiredParameters , int requiredParametersCount );
 
-    ApiEndpoint setWebPage( WebPage webPage );
-
     ApiEndpoint setFunction( String (*function)(String) );
 
     String getUrl();
@@ -43,6 +38,8 @@ class ApiEndpoint {
     int getRequiredParametersCount();
 
     String process( WebRequest webRequest );
+
+    WebPage generateWebPage( WebRequest webRequest );
     
 
 };

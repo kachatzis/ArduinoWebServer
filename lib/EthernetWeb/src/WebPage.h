@@ -2,10 +2,8 @@
 #define WEBPAGE_H
 
 
-
-
-//#include "EthernetWeb.h"
 #include <Arduino.h>
+
 
 class WebPage {
 
