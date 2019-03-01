@@ -10,6 +10,9 @@
 class WebRequest;
 
 
+typedef String (*apiEndpointFunction)(WebRequest);
+
+
 class ApiEndpoint {
 
   String url;
@@ -18,7 +21,8 @@ class ApiEndpoint {
   
   int requiredParametersCount;
   
-  String (*function)(String);   // TODO: Change Parameter to WebRequest*/
+  // String (*func)(WebRequest) ;
+  apiEndpointFunction func;
 
   
   public:
@@ -29,7 +33,8 @@ class ApiEndpoint {
 
     ApiEndpoint setRequiredParameters( String* requiredParameters , int requiredParametersCount );
 
-    ApiEndpoint setFunction( String (*function)(String) );
+    // ApiEndpoint setFunction( String (*func)(WebRequest) );
+    ApiEndpoint setFunction( apiEndpointFunction func_f );
 
     String getUrl();
 

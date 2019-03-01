@@ -22,8 +22,9 @@ ApiEndpoint ApiEndpoint::setUrl( String url ){
     return *this;
   }
 
-  ApiEndpoint ApiEndpoint::setFunction( String (*function)(String) ){
-    this->function = function;
+  ApiEndpoint ApiEndpoint::setFunction( apiEndpointFunction func_f ){ // TODO: Fix function storing
+    this->func = func_f;
+    apiEndpointFunction t = (this->func);
     return *this;
   }
 
@@ -39,11 +40,17 @@ ApiEndpoint ApiEndpoint::setUrl( String url ){
     return this->requiredParametersCount;
   }
 
-  String ApiEndpoint::process( WebRequest webRequest ){
-    return( (*(this->function))( "c" ) );
+  String ApiEndpoint::process( WebRequest webRequest ){ // TODO: Fix function calling
+    // Serial.print("  >PROCESS-FUNC:");
+    // delay(100);
+    // apiEndpointFunction t = (this->func);
+    // Serial.println(t( WebRequest() ));
+    // delay(100);
+    return getUrl();
   }
 
   WebPage ApiEndpoint::generateWebPage( WebRequest webRequest ){
-    WebPage webPage = WebPage().setBody( process( webRequest ) );
+    WebPage webPage = WebPage();
+    webPage.setBody( process( webRequest ) );
     return webPage;
   }
