@@ -13,7 +13,7 @@ ApiServer::ApiServer(){
   this->webServer = WebServer( EthernetServer(80) );
 }
 
-ApiServer::ApiServer( ApiEndpoint *endpoints , int endpoitsCount ) : ApiServer(){
+ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount ) : ApiServer(){
   this->endpoints = endpoints;
   this->endpointsCount = endpointsCount;
 }
