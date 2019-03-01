@@ -13,54 +13,22 @@ WebServer::WebServer( EthernetServer ethernetServer ){
 }
 
 WebRequest WebServer::getWebRequest(){
-
-  EthernetClient client;
-  client = this->ethernetServer.available();
-
-  if (client) {
-
-    String readString;
-    int maxLength = 50;
-
-    while (client.connected() && maxLength>0) { 
-
-      if (client.available()) {
-
-        char c = client.read();
-        readString += c;
-
-        if (readString.indexOf("\n")>0){
-
-          if (readString.indexOf("GET")>=0){
-            readString.trim();
-
-            WebRequest webRequest( readString , client );
-            return webRequest;
-
-          }else{
-
-            return WebRequest();
-
-          }
+  // EthernetClient client;
+  // client = this->ethernetServer.available();
+  // if (client) {
+  //   String readString;
+  //   int maxLength = 50;
+  //   while (client.connected() && maxLength>0) {   
+  //     if (client.available()) {
+  //       char c = client.read();
+  //       readString += c;
+  //       if (readString.indexOf("\n")>0){
+  //         Serial.print("  >REQUESTED:");
+  //         Serial.println(readString);
+  //         client.stop();
+  //         WebRequest webRequest( readString , client );
+  //         return webRequest;
           
-        }
-
-      }
-
-      maxLength--;
-
-    }
-
-    client.stop();
-
-    return WebRequest();
-
-  }
-
-  client.stop();
-  return WebRequest();
-
-}
   //       }
   //     }
   //     maxLength--;
