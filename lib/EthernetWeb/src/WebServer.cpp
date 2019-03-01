@@ -5,7 +5,7 @@
 
 
 WebServer::WebServer(){ 
-  Serial.println(1);
+  ;
 }
 
 WebServer::WebServer( EthernetServer ethernetServer ){
@@ -61,7 +61,7 @@ WebRequest WebServer::getWebRequest(){
   return WebRequest();
 
 }
-  //       }
+
 
   WebServer WebServer::replyRequest( WebPage webPage , EthernetClient ethernetClient ){
     serveWebPage( webPage , ethernetClient );
@@ -91,5 +91,3 @@ WebServer WebServer::closeRequest( EthernetClient ethernetClient ){
 }
 
 
-
-}
