@@ -4,6 +4,7 @@
 
 #include <Arduino.h>
 #include <Ethernet.h>
+#include "WebPage.h"
 
 
 class WebRequest;

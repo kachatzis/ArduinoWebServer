@@ -4,6 +4,7 @@
 #include "ApiEndpoint.h"
 #include "WebServer.h"
 #include "WebRequest.h"
+#include "WebPage.h"
 
 
 ApiServer::ApiServer(){
