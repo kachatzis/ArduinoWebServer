@@ -25,27 +25,32 @@ ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer we
 ApiServer ApiServer::runFullThread(){
   
   while(true){
-    delay(150);  // Wait 80ms before scans
-    Serial.println("  >SCAN");
+    delay(200);  // Wait 80ms between scans
     WebRequest *webRequest = new WebRequest();
    *webRequest = ((this->webServer).getWebRequest());
 
     if ((*webRequest).hasEnded()){
 
-      ApiEndpoint *sApiEndpoint = findEndpointByRequest(*webRequest);
-      if (sApiEndpoint.getUrl() == ""){
+      ApiEndpoint *sApiEndpoint = new ApiEndpoint();
+      *sApiEndpoint = (findEndpointByRequest(*webRequest));
+      if ((*sApiEndpoint).getUrl() == ""){
         continue;
       }
-      WebPage rWebPage = sApiEndpoint.generateWebPage( *webRequest );
       
-      webServer.replyRequest( rWebPage , (*webRequest).getEthernetClient() );
+      WebPage *rWebPage = new WebPage();
+      *rWebPage = (*sApiEndpoint).generateWebPage( *webRequest );
+      
+      webServer.replyRequest( *rWebPage , (*webRequest).getEthernetClient() );
       webServer.closeRequest( (*webRequest).getEthernetClient() );
 
+      delete sApiEndpoint;
+      delete rWebPage;
 
-      delay(100);  // Wait 100ms after the request
+      delay(400);  // Wait additional 100ms after the request
     }
     
-    delete &webRequest;
+    delete webRequest;
+    
   }
 
   return *this;

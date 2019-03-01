@@ -24,7 +24,7 @@ class ApiServer {
 
     ApiServer();
     
-    ApiServer( ApiEndpoint *endpoints , int endpoitsCount );
+    ApiServer( ApiEndpoint *endpoints , int endpointsCount );
 
     ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
 
