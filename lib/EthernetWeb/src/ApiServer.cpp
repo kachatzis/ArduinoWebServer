@@ -1,23 +1,23 @@
-#include <ApiServer.h>
+#include "ApiServer.h"
 
 
 ApiServer::ApiServer(){
-  //this->endpoints = new ApiEndpoint[0];
+  this->endpoints = new ApiEndpoint[0];
   this->endpointsCount = 0;
-  //this->webServer = WebServer( EthernetServer(80) );
+  this->webServer = WebServer( EthernetServer(80) );
 }
 
-// ApiServer::ApiServer( ApiEndpoint *endpoints , int endpoitsCount ) : ApiServer(){
-//   this->endpoints = endpoints;
-//   this->endpointsCount = endpointsCount;
-// }
+ApiServer::ApiServer( ApiEndpoint *endpoints , int endpoitsCount ) : ApiServer(){
+  this->endpoints = endpoints;
+  this->endpointsCount = endpointsCount;
+}
 
-// ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer ) : ApiServer( endpoints , endpointsCount ){
-//   this->webServer = webServer;
-// }
+ApiServer::ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer ) : ApiServer( endpoints , endpointsCount ){
+  this->webServer = webServer;
+}
 
 ApiServer ApiServer::startWebServer( EthernetServer ethernetServer ){
-  //this->webServer = WebServer( ethernetServer );
+  // this->webServer = WebServer( ethernetServer );
   return *this;
 }
 

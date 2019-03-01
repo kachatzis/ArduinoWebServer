@@ -1,10 +1,12 @@
 #ifndef WEBREQUEST_H
 #define WEBREQUEST_H
 
+
+
+#include "WebPage.h"
 #include <Arduino.h>
-#include <EthernetWebUtils.h>
-#include "Ethernet3.h"
-#include <WebPage.h>
+#include "EthernetWebUtils.h"
+#include <Ethernet3.h>
 
 
 /*//#define REQUEST_METHOD_ENUM = (EthernetWebUtils::REQUEST_METHOD_STRING)
@@ -28,26 +30,25 @@
 // };*/
 
 
-
 class WebRequest {
   
-  // String url;
+  String url;
   
-  // String (*parameters)[2];
+  String (*parameters)[2];
   
-  // int parametersCount;
+  int parametersCount;
   
-  // // REQUEST_METHOD_ENUM method; 
+  // REQUEST_METHOD_ENUM method; 
   
-  // String body;
+  String body;
   
-  // int contentLength;
+  int contentLength;
   
-  // String realRequest;
+  String realRequest;
   
-  // EthernetClient ethernetClient;
+  EthernetClient ethernetClient;
 
-  // WebPage webPage;
+  WebPage webPage;
 
 
 
@@ -55,45 +56,45 @@ class WebRequest {
 
     WebRequest();
 
-    // WebRequest( String request );
+    WebRequest( String request );
 
-    // WebRequest( String request , EthernetClient ethernetClient ) ;
+    WebRequest( String request , EthernetClient ethernetClient ) ;
 
-    // ~WebRequest();
+    ~WebRequest();
 
-    // String* splitString( String string , String delimiter  );
+    String* splitString( String string , String delimiter  );
 
-    // void setRequestUrl( String request );
+    void setRequestUrl( String request );
     
-    // // DISABLE REQUEST ENUM
-    // //REQUEST_METHOD_ENUM setRequestMethod( String request );
+    // DISABLE REQUEST ENUM
+    //REQUEST_METHOD_ENUM setRequestMethod( String request );
     
-    // int setContentLength( String request );
+    int setContentLength( String request );
     
-    // String setRequestBody( String request );
+    String setRequestBody( String request );
 
-    // String getBody();
+    String getBody();
 
-    // String getUrl();
+    String getUrl();
 
-    // // DISABLE REQUEST ENUM
-    // //REQUEST_METHOD_ENUM getMethod();
+    // DISABLE REQUEST ENUM
+    //REQUEST_METHOD_ENUM getMethod();
 
-    // int getContentLength();
+    int getContentLength();
 
-    // void setRequestParameters( String parameters );
+    void setRequestParameters( String parameters );
 
-    // bool hasEnded();
+    bool hasEnded();
 
-    // String (*getParameters())[2];
+    String (*getParameters())[2];
 
-    // int getParametersCount();
+    int getParametersCount();
 
-    // void setWebPage(WebPage webPage);
+    void setWebPage(WebPage webPage);
 
-    // void reply();
+    void reply();
 
-    // EthernetClient getEthernetClient();
+    EthernetClient getEthernetClient();
     
 };
 

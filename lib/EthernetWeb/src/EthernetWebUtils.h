@@ -2,10 +2,12 @@
 #define ETHERNETWEBUTILS_H
 
 
-#include "Ethernet3.h"
-#include <WebServer.h>
-#include <ApiServer.h> 
-#include <WebPage.h>
+
+#include "WebPage.h"
+// #include "EthernetWeb.h"
+#include <Ethernet3.h>
+#include "WebServer.h"
+#include "ApiServer.h" 
 
 
 /*// #define FOREACH_REQUEST_METHOD(REQUEST_METHOD)  \

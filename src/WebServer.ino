@@ -1,8 +1,7 @@
 #include <SPI.h>
-//#include <Ethernet.h>
-
-
-#include <TestLib.h>
+#include <Ethernet3.h>
+#include "WebRequest.h"
+#include "EthernetWeb.h"
 
 
 
@@ -59,7 +58,7 @@ void loop() {
   ApiServer apiServer = ApiServer( *apiEndpoints , 1 , server );
   apiServer.runFullThread();
   */
-  Serial.println("  >API-FULL-THREAD-COLLAPSED");
+  Serial.println("  >555555555555");
   //Serial.println( WEBPAGE_H );
   delay(500);
 }

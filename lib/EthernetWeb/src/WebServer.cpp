@@ -1,4 +1,4 @@
-#include <WebServer.h>
+#include "WebServer.h"
 
 
 WebServer::WebServer( EthernetServer ethernetServer ){
@@ -22,8 +22,8 @@ WebRequest WebServer::awaitRequest(){
           Serial.print("  >REQUESTED:");
           Serial.println(readString);
           client.stop();
-          // WebRequest webRequest( readString , client );
-          // return webRequest;
+          WebRequest webRequest( readString , client );
+          return webRequest;
           
         }
       }

@@ -1,29 +1,32 @@
 #ifndef APISERVER_H
 #define APISERVER_H
 
+
+
+// #include "EthernetWeb.h"
 #include <Arduino.h>
-#include <WebServer.h>
-#include <WebRequest.h>
-#include <ApiEndpoint.h>
-#include "Ethernet3.h"
+#include "WebServer.h"
+#include "WebRequest.h"
+#include "ApiEndpoint.h"
+#include <Ethernet3.h>
 
 
 class ApiServer {
   
-  //ApiEndpoint *endpoints;
+  ApiEndpoint *endpoints;
   
   int endpointsCount;
   
-  //WebServer webServer;
+  WebServer webServer;
 
   
   public: 
 
     ApiServer();
     
-    //ApiServer( ApiEndpoint *endpoints , int endpoitsCount );
+    ApiServer( ApiEndpoint *endpoints , int endpoitsCount );
 
-    //ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
+    ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
 
     ApiServer startWebServer( EthernetServer ethernetServer );
 
@@ -31,5 +34,6 @@ class ApiServer {
 
   
 };
+
 
 #endif

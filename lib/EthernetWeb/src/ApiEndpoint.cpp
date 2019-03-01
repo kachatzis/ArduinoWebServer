@@ -1,4 +1,4 @@
-#include <ApiEndpoint.h> 
+#include "ApiEndpoint.h" 
 
  
 ApiEndpoint::ApiEndpoint(){
@@ -42,6 +42,6 @@ ApiEndpoint ApiEndpoint::setUrl( String url ){
     return this->requiredParametersCount;
   }
 
-  // String ApiEndpoint::process( WebRequest webRequest ){
-  //   return( (*(this->function))( "c" ) );
-  // }
+  String ApiEndpoint::process( WebRequest webRequest ){
+    return( (*(this->function))( "c" ) );
+  }
