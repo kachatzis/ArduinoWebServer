@@ -84,4 +84,12 @@ WebRequest WebServer::getWebRequest(){
     // client.println("</HTML>");
 }
 
+
+WebServer WebServer::closeRequest( EthernetClient ethernetClient ){
+  ethernetClient.stop();
+  return *this;
+}
+
+
+
 }
