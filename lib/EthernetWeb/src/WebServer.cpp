@@ -62,12 +62,12 @@ WebRequest WebServer::getWebRequest(){
 
 }
   //       }
-  //     }
-  //     maxLength--;
-  //   }
-  //   Serial.println("  >NULL-REQUEST-CLIENT-NOT-AVAILABLE-OR-MAX-LENGTH");
-  //   client.stop();
-  //   return WebRequest();
+
+  WebServer WebServer::replyRequest( WebPage webPage , EthernetClient ethernetClient ){
+    serveWebPage( webPage , ethernetClient );
+    return *this;
+  }
+
   // }
   // client.stop();
   return (WebRequest());
