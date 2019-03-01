@@ -28,8 +28,6 @@ class ApiServer {
 
     ApiServer( ApiEndpoint *endpoints , int endpointsCount , WebServer webServer );
 
-    // ApiServer startWebServer( EthernetServer ethernetServer );
-
     ApiServer runFullThread();
 
     ApiEndpoint findEndpointByRequest( WebRequest webRequest );

@@ -22,7 +22,7 @@ class WebServer {
     WebServer( EthernetServer ethernetServer );
     
     WebRequest getWebRequest();
-    // void awaitRequest( );
+
 
 };
 
