@@ -68,7 +68,20 @@ WebRequest WebServer::getWebRequest(){
     return *this;
   }
 
-  // }
-  // client.stop();
-  return (WebRequest());
+  void WebServer::serveWebPage( WebPage webPage , EthernetClient client ){
+    client.println("HTTP/1.1 200 OK");
+    client.println("Content-Type: text/html");
+    client.println();     
+    // client.println("<HTML>");
+    // client.println("<HEAD>");
+    // client.println("<TITLE>");
+    // client.println( webPage.getTitle() );
+    // client.println("</TITLE>");
+    // client.println("</HEAD>");
+    // client.println("<BODY>");
+    client.println( webPage.getBody() );
+    // client.println("</BODY>");
+    // client.println("</HTML>");
+}
+
 }
