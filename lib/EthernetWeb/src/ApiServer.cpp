@@ -47,3 +47,11 @@ ApiServer ApiServer::runFullThread(){
 
  return *this;
 }
+ApiEndpoint ApiServer::findEndpointByRequest( WebRequest webRequest ){
+  for (int i=0; i<endpointsCount; i++){
+   if (this->endpoints[i].getUrl() == webRequest.getUrl()){
+      return endpoints[i];
+    }
+  }
+  return ApiEndpoint();
+}

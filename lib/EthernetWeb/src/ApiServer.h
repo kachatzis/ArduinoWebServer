@@ -32,6 +32,7 @@ class ApiServer {
 
     ApiServer runFullThread();
 
+    ApiEndpoint findEndpointByRequest( WebRequest webRequest );
   
 };
 
