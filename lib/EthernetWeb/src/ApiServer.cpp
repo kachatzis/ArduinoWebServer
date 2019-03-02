@@ -5,6 +5,7 @@
 #include "WebServer.h"
 #include "WebRequest.h"
 #include "WebPage.h"
+#include "MemoryFree.h"
 
 
 ApiServer::ApiServer(){
