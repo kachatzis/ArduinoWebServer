@@ -6,25 +6,38 @@
 
  
 WebRequest::WebRequest() {
-  this->url = "";
+  Serial.println(">!SETTING-URL");
+  strcpy(this->url , "");
+  Serial.println(">!SETTING-PARAMETER-COUNT");
   this->parametersCount = 0;
 }
 
-WebRequest::WebRequest( String request ) : WebRequest(){
-  request.trim();
-  this->realRequest = request;
+WebRequest::WebRequest( char *request ) : WebRequest(){
+  // *request.trim();
+  strcpy(this->realRequest, request);
   this->setRequestUrl( request );
 }
 
-WebRequest::WebRequest( String request , EthernetClient ethernetClient ) : WebRequest(request){
-  this->ethernetClient = ethernetClient;
+WebRequest::WebRequest( String request , EthernetClient ethernetClient ) : WebRequest(&request[0]){
+  *(this->ethernetClient) = ethernetClient;
 }
 
 WebRequest::~WebRequest() {
-  String url;
+  // url = "";
+  // for (int i=0; i<parametersCount; i++){
+  //   parameters[i][0] = "";
+  //   parameters[i][1] = "";
+  // }
+  // // realRequest = "";
+  // free ethernetClient;
+
+  delete url;
+  delete parameters;
+  delete realRequest;
+  // delete ethernetClient;
 }
 
-String* WebRequest::splitString( String string , String delimiter  ){
+char** WebRequest::splitString( String string , String delimiter  ){
   String* result = new String[2];
   for (int i = 0; i < string.length(); i++){
     if ( string.substring( i , i + delimiter.length() ) == delimiter ){
@@ -35,26 +48,26 @@ String* WebRequest::splitString( String string , String delimiter  ){
   return result;
 }
 
-void WebRequest::setRequestUrl( String request ){
-  String url;
+void WebRequest::setRequestUrl( const char* request ){
+  char* url;
 
-  int urlStartIndex = request.indexOf(" ") + 1;
-  int urlEndIndex = request.lastIndexOf(" ") - 1;
+  int urlStartIndex = (int)( strstr( request , " ") - request ) + 1;
+  int urlEndIndex = String(request).lastIndexOf(" ") - 1;
   
   for (int i=0; i<=urlEndIndex-urlStartIndex; i++){
     url += request[ i + urlStartIndex ];
   }
   
-  String* str = splitString( url , "?" );
-  this->url = str[0];
+  const char* *str = splitString( url , "?" );
+  strcpy( this->url, &str[0][0]);
   this->setRequestParameters( str[1] );
 }
 
-String WebRequest::getUrl(){
-  return this->url;
+const char* WebRequest::getUrl(){
+  return (this->url);
 }
 
-void WebRequest::setRequestParameters( String parameters ){
+void WebRequest::setRequestParameters( char* parameters ){
 
   int parametersCount;
   
@@ -62,7 +75,7 @@ void WebRequest::setRequestParameters( String parameters ){
 
   this->parametersCount = parametersCount;
 
-  this->parameters = EthernetWebUtils::split_2d_string_to_array( str , "=" , parametersCount );
+  this->parameters = (EthernetWebUtils::split_2d_string_to_array( str , "=" , parametersCount ))[0][0];
 }
 
 bool WebRequest::hasEnded(){
@@ -72,7 +85,7 @@ bool WebRequest::hasEnded(){
   return false;
 }
 
-String (*WebRequest::getParameters())[2]{
+const char* (*WebRequest::getParameters())[2]{
   return this->parameters;
 }
 
@@ -85,6 +98,6 @@ void WebRequest::reply(){
 }
 
 EthernetClient WebRequest::getEthernetClient(){
-  return this->ethernetClient;
+  return *(this->ethernetClient);
 }
 

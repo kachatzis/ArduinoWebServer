@@ -11,38 +11,38 @@ class WebPage;
 
 class WebRequest {
   
-  String url;
+  const char *url;
   
-  String (*parameters)[2];
+  const char *(*parameters)[2];
   
   int parametersCount;
   
-  String realRequest;
+  const char *realRequest;
   
-  EthernetClient ethernetClient;
+  EthernetClient *ethernetClient;
 
 
   public:
 
     WebRequest();
 
-    WebRequest( String request );
+    WebRequest( char *request );
 
-    WebRequest( String request , EthernetClient ethernetClient ) ;
+    WebRequest( char* request , EthernetClient ethernetClient ) ;
 
     ~WebRequest();
 
-    String* splitString( String string , String delimiter  );
+    const char** splitString( char* string , char* delimiter  );
 
-    void setRequestUrl( String request );
+    void setRequestUrl( const char* request );
 
-    String getUrl();
+    const char* getUrl();
 
-    void setRequestParameters( String parameters );
+    void setRequestParameters( char* parameters );
 
     bool hasEnded();
 
-    String (*getParameters())[2];
+    const char* (*getParameters())[2];
 
     int getParametersCount();
 
