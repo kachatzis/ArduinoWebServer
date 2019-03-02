@@ -4,7 +4,11 @@
 WebPage::WebPage(){
   body = "";
   title = "";
-  useClient = true;
+}
+
+WebPage::~WebPage(){
+  this->body = "";
+  this->title = "";
 }
 
 WebPage WebPage::setBody(String body){
@@ -17,11 +21,6 @@ WebPage WebPage::setTitle(String title){
   return *this;
 }
 
-WebPage WebPage::setUseClient(bool useClient){
-  this->useClient = useClient;
-  return *this;
-}
-
 String WebPage::getBody(){
   return this->body;
 }
@@ -29,8 +28,3 @@ String WebPage::getBody(){
 String WebPage::getTitle(){
   return this->title;
 }
-
-bool WebPage::getUseClient(){
-  return this->useClient;
-}
-  

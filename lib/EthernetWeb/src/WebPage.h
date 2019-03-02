@@ -11,24 +11,20 @@ class WebPage {
   
   String title;
   
-  bool useClient;
-  
  
  public:
     
     WebPage();
+
+    ~WebPage();
     
     WebPage setBody(String body);
     
     WebPage setTitle(String title);
     
-    WebPage setUseClient(bool useClient);
-    
     String getBody();
     
     String getTitle();
-    
-    bool getUseClient();
 
 };
 
